@@ -1,4 +1,5 @@
 {
+	"name": "expenses-tracker-ui",
 	"compatibility_date": "2026-08-25",
 	"compatibility_flags": [
 		"nodejs_compat"
