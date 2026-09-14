@@ -1,12 +1,14 @@
 {
-	"name": "expenses-tracker-ui",
-	"compatibility_date": "2026-08-25",
-	"compatibility_flags": [
-		"nodejs_compat"
-	],
-	"pages_build_output_dir": "./dist",
-	"observability": {
-		"enabled": true
-	},
-	"upload_source_maps": true
+  "name": "expenses-tracker-ui",
+  "compatibility_date": "2026-08-25",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "assets": {
+    "directory": "./dist"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "upload_source_maps": true
 }
