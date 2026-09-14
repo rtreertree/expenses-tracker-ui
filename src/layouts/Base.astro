@@ -1,0 +1,14 @@
+---
+import '../styles/global.css';
+const { children, title = 'Spendline' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Plain-math expense analytics." />
+    <title>{title}</title>
+  </head>
+  <body><slot /></body>
+</html>

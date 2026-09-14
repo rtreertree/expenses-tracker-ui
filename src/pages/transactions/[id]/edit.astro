@@ -1,0 +1,9 @@
+---
+import Base from '../../../layouts/Base.astro';
+import App from '../../../components/App';
+
+export function getStaticPaths() {
+	return [{ params: { id: 'new' } }];
+}
+---
+<Base title="Spendline / Edit expense"><App page="edit" client:load /></Base>
