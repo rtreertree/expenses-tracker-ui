@@ -18,6 +18,7 @@ import {
   numeric,
   median,
   sum,
+  transactionsForToday,
   type Transaction,
 } from "../lib/analytics";
 
@@ -139,9 +140,11 @@ export function Range({
   );
 }
 
-export function Kpis({ transactions }: { transactions: Transaction[] }) {
+export function Kpis({ transactions, allTransactions = transactions }: { transactions: Transaction[]; allTransactions?: Transaction[] }) {
   const values = transactions.map((item) => numeric(item.value));
   const currency = transactions[0]?.currency || "THB";
+  const todayTransactions = transactionsForToday(allTransactions);
+  const todayCurrency = todayTransactions[0]?.currency || currency;
   return (
     <div className="kpi-grid">
       <div className="kpi highlight">
@@ -154,10 +157,10 @@ export function Kpis({ transactions }: { transactions: Transaction[] }) {
         <div className="kpi-value">{money(average(values), currency)}</div>
         <div className="kpi-meta">per transaction</div>
       </div>
-      <div className="kpi">
-        <div className="kpi-label">Median value</div>
-        <div className="kpi-value">{money(median(values), currency)}</div>
-        <div className="kpi-meta">middle transaction</div>
+      <div className="kpi today-kpi">
+        <div className="kpi-label">Today spent</div>
+        <div className="kpi-value">{money(sum(todayTransactions.map((item) => numeric(item.value))), todayCurrency)}</div>
+        <div className="kpi-meta">since local midnight</div>
       </div>
       <div className="kpi">
         <div className="kpi-label">Transactions</div>

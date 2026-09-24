@@ -37,6 +37,14 @@ export const periodTransactions = (transactions: Transaction[], period: 'Week' |
 		return time >= start.getTime() && time < end.getTime();
 	});
 };
+export const transactionsForToday = (transactions: Transaction[], now = new Date()) => {
+	const start = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+	const end = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1).getTime();
+	return transactions.filter(transaction => {
+		const time = new Date(transaction.date_time).getTime();
+		return time >= start && time < end;
+	});
+};
 export const previousPeriodTransactions = (transactions: Transaction[], period: 'Month' | 'Year') => { if (!transactions.length) return []; const latest = Math.max(...transactions.map(transaction => new Date(transaction.date_time).getTime())); const days = period === 'Month' ? 31 : 365; const end = latest - days * 24 * 60 * 60 * 1000; const start = end - days * 24 * 60 * 60 * 1000; return transactions.filter(transaction => { const time = new Date(transaction.date_time).getTime(); return time >= start && time < end; }); };
 
 export type DateRange = { start: string; end: string };

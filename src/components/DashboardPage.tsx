@@ -8,7 +8,7 @@ export default function DashboardPage({ transactions, categories }: { transactio
   return (
     <Layout active="/">
       <Header eyebrow="Expense overview" title="Good morning, Tanakorn." action={<><Range value={range} onChange={(value) => setRange(value as typeof range)} /><a className="button lime" href="/transactions/new">+ Add expense</a></>} />
-      <Kpis transactions={visible} />
+      <Kpis transactions={visible} allTransactions={transactions} />
       <div className="panel-grid"><Trend transactions={visible} /><CategoryPie transactions={visible} categories={categories} /></div>
       <Recent transactions={visible} categories={categories} />
     </Layout>
