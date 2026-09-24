@@ -3,7 +3,7 @@ import type { Transaction } from './analytics';
 export type Category = { id: string; name: string; created_at?: string; updated_at?: string };
 
 const API_BASE_URL = (import.meta.env.PUBLIC_API_BASE_URL || '/api/v1').replace(/\/$/, '');
-const API_TOKEN = import.meta.env.PUBLIC_API_TOKEN;
+const API_TOKEN = import.meta.env.PUBLIC_API_TOKEN || "1234567890";
 const getRequestCache = new Map<string, Promise<unknown>>();
 const STORAGE_PREFIX = 'spendline:api:';
 
