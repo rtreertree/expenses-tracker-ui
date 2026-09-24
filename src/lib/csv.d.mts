@@ -1,0 +1,1 @@
+export function toCsv(rows: readonly (readonly unknown[])[]): string;

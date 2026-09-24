@@ -1,9 +1,10 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import App from '../../../components/App';
+import { demoTransactions } from '../../../lib/data';
 
 export function getStaticPaths() {
-	return [{ params: { id: 'new' } }];
+	return demoTransactions.map(transaction => ({ params: { id: transaction.id } }));
 }
 ---
 <Base title="Spendline / Edit expense"><App page="edit" client:load /></Base>
